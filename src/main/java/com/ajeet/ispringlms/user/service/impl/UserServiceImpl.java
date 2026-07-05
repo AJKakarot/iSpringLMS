@@ -1,6 +1,7 @@
 package com.ajeet.ispringlms.user.service.impl;
 
 import com.ajeet.ispringlms.common.exception.EmailAlreadyExistsException;
+import com.ajeet.ispringlms.user.dto.request.UserRegistrationRequest;
 import com.ajeet.ispringlms.user.dto.response.UserResponse;
 import com.ajeet.ispringlms.user.entity.User;
 import com.ajeet.ispringlms.user.enums.Role;
@@ -15,13 +16,12 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+
     @Override
-    public UserResponse register(UserResponse.UserRegistrationRequest request) {
+    public UserResponse register(UserRegistrationRequest request) {
 
-        if(userRepository.existsByEmail(request.getEmail())){
-
+        if (userRepository.existsByEmail(request.getEmail())) {
             throw new EmailAlreadyExistsException("Email already exists");
-
         }
 
         User user = User.builder()
@@ -31,9 +31,6 @@ public class UserServiceImpl implements UserService {
                 .role(Role.STUDENT)
                 .build();
 
-        userRepository.save(user);
-
-
         User savedUser = userRepository.save(user);
 
         return UserResponse.builder()
@@ -42,7 +39,5 @@ public class UserServiceImpl implements UserService {
                 .email(savedUser.getEmail())
                 .role(savedUser.getRole())
                 .build();
-
     }
-
 }

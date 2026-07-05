@@ -1,4 +1,13 @@
 package com.ajeet.ispringlms.auth.service;
 
-public class AuthService {
+import com.ajeet.ispringlms.auth.dto.LoginRequest;
+import com.ajeet.ispringlms.auth.dto.LoginResponse;
+
+/**
+ * Service interface for authentication operations.
+ */
+public interface AuthService {
+
+    LoginResponse login(LoginRequest request);
+
 }
