@@ -1,5 +1,4 @@
-package com.ajeet.ispringlms.user.dto;
-
+package com.ajeet.ispringlms.auth.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,12 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserRegistrationRequest {
+public class LoginRequest {
 
-    @NotBlank(message = "Name is required")
-    private String name;
-
-    @Email(message = "Invalid email")
+    @Email(message = "Invalid Email")
     @NotBlank(message = "Email is required")
     private String email;
 

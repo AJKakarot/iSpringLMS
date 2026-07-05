@@ -1,6 +1,7 @@
 package com.ajeet.ispringlms.user.controller;
 
-import com.ajeet.ispringlms.user.dto.UserRegistrationRequest;
+import com.ajeet.ispringlms.common.response.ApiResponse;
+import com.ajeet.ispringlms.user.dto.response.UserResponse;
 import com.ajeet.ispringlms.user.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,12 +17,21 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public void register(@Valid @RequestBody UserRegistrationRequest request){
+    public ApiResponse<UserResponse> register(
+            @Valid @RequestBody UserResponse.UserRegistrationRequest request){
 
-        userService.register(request);
+        UserResponse response =
+                userService.register(request);
+
+        return ApiResponse.<UserResponse>builder()
+                .success(true)
+                .message("User registered successfully")
+                .data(response)
+                .build();
 
     }
+    }
 
-}
+
 
 // Testing Git Commit

@@ -1,9 +1,9 @@
 package com.ajeet.ispringlms.user.service;
 
-import com.ajeet.ispringlms.user.dto.UserRegistrationRequest;
+import com.ajeet.ispringlms.user.dto.response.UserResponse;
 
 public interface UserService {
 
-    void register(UserRegistrationRequest request);
+    UserResponse register(UserResponse.UserRegistrationRequest request);
 
 }
