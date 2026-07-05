@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: iSpringLMS
+
+  datasource:
+    # my_lms_db की जगह अपने Postgres डेटाबेस का नाम लिखें
+    url: jdbc:postgresql://localhost:5432/my_lms_db
+    # अपना PostgreSQL का Username (आमतौर पर postgres होता है) और Password यहाँ डालें
+    username: ajeet
+    password: ajeet
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
